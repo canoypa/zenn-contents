@@ -1,0 +1,9 @@
+{
+  "name": "zenn-contents",
+  "version": "1.0.0",
+  "description": "https://zenn.dev/canoypa",
+  "license": "MIT",
+  "dependencies": {
+    "zenn-cli": "^0.1.125"
+  }
+}
