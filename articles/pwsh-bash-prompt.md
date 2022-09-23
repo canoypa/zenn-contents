@@ -3,7 +3,7 @@ title: "PowerShell のプロンプトを bash っぽくする"
 emoji: "⌨"
 type: "tech"
 topics: ["powershell"]
-published: false
+published: true
 ---
 
 最近 WSL などで Linux を触ってみている中で、bash のシンプルでカラフルなプロンプトをかなり気に入っちゃったので、普段使う PowerShell のプロンプトも bash っぽくしてみます。
