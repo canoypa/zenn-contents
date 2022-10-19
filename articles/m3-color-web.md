@@ -6,7 +6,7 @@ topics: ["materialdesign"]
 published: true
 ---
 
-Web 向けの Material 3 ライブラリは [Additional libraries](https://m3.material.io/libraries/additional) によると、現在 "Support planned" となってますが、Flutter でも使用されている新しい Color System を実装するライブラリの NPM 版が公開されていたりするので、こちらを使用して Web アプリにも Material 3 の Color System だけ導入することができます。
+Web 向けの Material 3 ライブラリは[こちらのページ](https://m3.material.io/develop/web)によると、現在「対応予定」となってますが、Flutter でも使用されている新しい Color System を実装するライブラリの NPM 版が公開されていたりするので、こちらを使用して Web アプリにも Material 3 の Color System だけ導入することができます。
 
 Material 3 の Color System についての公式ドキュメントはこちら。
 
