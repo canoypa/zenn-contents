@@ -115,4 +115,4 @@ const lightCustomOnColor = lightCustom.onColor;
 
 ## サンプル
 
-https://codesandbox.io/embed/m3-dynamic-color-ecuwb1?fontsize=14&hidenavigation=1&theme=dark
+@[codesandbox](https://codesandbox.io/embed/m3-dynamic-color-ecuwb1)
