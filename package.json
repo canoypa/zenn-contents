@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "https://zenn.dev/canoypa",
   "license": "MIT",
+  "scripts": {
+    "preview": "zenn preview"
+  },
   "dependencies": {
     "zenn-cli": "^0.1.142"
   }
