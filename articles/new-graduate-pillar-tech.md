@@ -3,7 +3,7 @@ title: "新卒エンジニアを支える技術"
 emoji: "📛"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [新卒, 開発環境]
-published: false
+published: true
 publication_name: "port_inc"
 ---
 
