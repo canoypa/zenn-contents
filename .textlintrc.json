@@ -1,6 +1,13 @@
 {
   "plugins": {},
-  "filters": {},
+  "filters": {
+    "comments": true,
+    "allowlist": {
+      "allow": [
+        "/^:::message\\n(?:.+\\n)+:::$/m"
+      ]
+    }
+  },
   "rules": {
     "ja-space-between-half-and-full-width": {
       "space": "always"
