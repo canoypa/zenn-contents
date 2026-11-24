@@ -16,7 +16,10 @@
       "no-exclamation-question-mark": false,
       "ja-no-weak-phrase": false,
       "ja-no-mixed-period": {
-        "allowEmojiAtEnd": true
+        "allowEmojiAtEnd": true,
+        "allowPeriodMarks": [
+          ":"
+        ]
       }
     }
   }

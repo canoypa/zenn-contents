@@ -29,8 +29,12 @@ https://www.raycast.com/
 
 サイトトップの「Your shortcut to everything.」という説明のとおり、システムの音量操作やクリップボード履歴など、様々な操作ができるツールです。
 
+<!-- textlint-disable no-successive-sentence-pattern -->
+
 めちゃくちゃ便利です。これないと何も作業できないくらい、めちゃくちゃ便利です。
 ここでは頻繁に使っている機能をいくつか紹介します。
+
+<!-- textlint-enable no-successive-sentence-pattern -->
 
 ### アプリランチャー
 
