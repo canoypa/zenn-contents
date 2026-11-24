@@ -514,7 +514,11 @@ Agent Skills の登場に合わせてこの体制を構築して以降、Instruc
 
 Instructions の整備が進んだことで、成果物の質も向上してきたほか、私の開発スタイルに合ってきたことで、自然とエージェントと開発ができ、「相棒」感が増してきました。
 
+<!-- textlint-disable no-successive-sentence-pattern -->
+
 成果物をエージェントに任せて楽をする。エージェントのための Instructions 整備もエージェントに任せて楽をする。
+
+<!-- textlint-enable no-successive-sentence-pattern -->
 
 エンジニアの美徳たる「怠惰」を発揮できていると感じて、とても楽しいです。
 
