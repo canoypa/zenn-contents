@@ -4,7 +4,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "CI で lockfile を確かめる gh-actions-lock を最新に保つ",
+      "description": "CI の gh-actions-lock の版を更新する",
       // github-actions マネージャは、workflow の env に書いた拡張の版を見ない
       "managerFilePatterns": [".github/workflows/ci.yaml"],
       "matchStrings": ["GH_ACTIONS_LOCK_VERSION:\\s*(?<currentValue>v\\S+)"],
@@ -14,19 +14,19 @@
   ],
   "packageRules": [
     {
-      "description": "patch と digest の更新を、手でマージせずに取り込む",
+      "description": "patch・digest 更新の自動マージ",
       "matchUpdateTypes": ["patch", "digest"],
       "groupName": "patch and digest updates",
       "automerge": true
     },
     {
-      "description": "npm の minor の更新で、手で見る PR を少なくする",
+      "description": "npm の minor 更新をまとめる",
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["minor"],
       "groupName": "npm minor dependencies"
     },
     {
-      "description": "zenn-cli と textlint を、major の更新も手でマージせずに最新に保つ",
+      "description": "zenn-cli と textlint の major までの自動マージ",
       "matchManagers": ["npm"],
       // textlint は CI の pnpm lint で動くのを確かめられる。
       // 名前で並べる。textlint-* だと、あとから足した textlint- で始まるパッケージも、誰が出したものでも major まで自動マージされる
