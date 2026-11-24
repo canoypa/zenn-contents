@@ -15,13 +15,30 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
 
       # Node と pnpm のバージョンは mise.toml から用意する
-      - uses: jdx/mise-action@236a21c3b91f5db6d4e174b348674a0f0caac06d # v5.2.9
+      - uses: jdx/mise-action@v5.2.9
 
       - name: 依存をインストール
         run: pnpm install --frozen-lockfile
 
       - name: textlint
         run: pnpm lint
+
+  actions-lock:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_ACTIONS_LOCK_VERSION: v0.5.1
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: gh-actions-lock を入れる
+        run: gh extension install github/gh-actions-lock --pin "$GH_ACTIONS_LOCK_VERSION"
+
+      # uses を変えて lockfile を作り直し忘れると、ここで落ちる
+      - name: lockfile を確かめる
+        run: gh actions-lock --verify
