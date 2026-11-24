@@ -3,12 +3,28 @@
   "extends": [
     "github>canoypa/renovate-config"
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "github-actions マネージャが見ない gh-actions-lock 拡張のバージョンを追跡する",
+      "managerFilePatterns": [".github/workflows/ci.yaml"],
+      "matchStrings": ["GH_ACTIONS_LOCK_VERSION:\\s*(?<currentValue>v\\S+)"],
+      "depNameTemplate": "github/gh-actions-lock",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
   "packageRules": [
     {
-      "description": "npm の minor・patch 更新をまとめる。CI が無いので自動マージはしない",
+      "description": "パッチ・SHA ダイジェスト更新をまとめて自動マージする。main の ruleset で CI の ci-ok を必須にしている",
+      "matchUpdateTypes": ["patch", "digest"],
+      "groupName": "patch and digest updates",
+      "automerge": true
+    },
+    {
+      "description": "npm の minor 更新をまとめる",
       "matchManagers": ["npm"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "npm non-major dependencies"
+      "matchUpdateTypes": ["minor"],
+      "groupName": "npm minor dependencies"
     }
   ]
 }
