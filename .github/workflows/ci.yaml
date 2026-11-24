@@ -20,10 +20,10 @@ jobs:
       # Node と pnpm のバージョンは mise.toml から用意する
       - uses: jdx/mise-action@v5.2.9
 
-      - name: 依存をインストール
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: textlint
+      - name: Run textlint
         run: pnpm lint
 
   actions-lock:
@@ -36,11 +36,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: gh-actions-lock を入れる
+      - name: Install gh-actions-lock
         run: gh extension install github/gh-actions-lock --pin "$GH_ACTIONS_LOCK_VERSION"
 
       # uses を変えて lockfile を作り直し忘れると、ここで落ちる
-      - name: lockfile を確かめる
+      - name: Verify lockfile
         run: gh actions-lock --verify
 
   # 個々のジョブを ruleset の必須チェックに並べない。ジョブを足すたびに ruleset の
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: {}
     steps:
-      - name: 結果を確かめる
+      - name: Check results
         env:
           RESULTS: ${{ toJSON(needs.*.result) }}
         run: |
