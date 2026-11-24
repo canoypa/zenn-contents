@@ -6,7 +6,9 @@ topics: ["materialdesign"]
 published: true
 ---
 
-Web 向けの Material 3 ライブラリは[こちらのページ](https://m3.material.io/develop/web)によると、現在「対応予定」となってますが、Flutter でも使用されている新しい Color System を実装するライブラリの NPM 版が公開されていたりするので、こちらを使用して Web アプリにも Material 3 の Color System だけ導入することができます。
+Web 向けの Material 3 ライブラリは[こちらのページ](https://m3.material.io/develop/web)によると、現在「対応予定」となってます。
+ただ、Flutter でも使用されている新しい Color System を実装するライブラリの NPM 版が公開されています。
+こちらを使用すれば、Web アプリにも Material 3 の Color System だけ導入できます。
 
 Material 3 の Color System についての公式ドキュメントはこちら。
 
@@ -45,13 +47,13 @@ themeFromSourceColor(seedColor, [
 ]);
 ```
 
-カスタムカラーは単にテーマに対して key:value で追加されるわけではなく、テキストカラーやコンテナカラーが一緒に生成されるようになっています。
+カスタムカラーは単にテーマへ key:value で追加されるわけではなく、テキストカラーやコンテナカラーも一緒に生成される仕組みです。
 
 ![](/images/m3-color-web/scheme.png)
 
 > [Color rules](https://m3.material.io/styles/color/the-color-system/color-roles) より
 
-また `blend` オプションを渡すことで、[Harmonization](https://m3.material.io/styles/color/the-color-system/custom-colors#0a23e6c1-3a6b-490d-a6b6-b7bce64314e2) という仕組みを適応することも可能です。
+また `blend` オプションを渡すことで、[Harmonization](https://m3.material.io/styles/color/the-color-system/custom-colors#0a23e6c1-3a6b-490d-a6b6-b7bce64314e2) という仕組みも適用できます。
 
 ```diff ts
  themeFromSourceColor(seedColor, [
@@ -63,7 +65,7 @@ themeFromSourceColor(seedColor, [
  ]);
 ```
 
-Harmonization を適応すると以下の画像のように、カスタムカラーを少しシードカラーに寄せることで、アプリの色合いにまとまりを持たせます。
+Harmonization を適用すると以下の画像のように、カスタムカラーを少しシードカラーに寄せることで、アプリの色合いにまとまりを持たせます。
 
 ![](/images/m3-color-web/harmonization.gif)
 
