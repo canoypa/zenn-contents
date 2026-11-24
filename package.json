@@ -8,7 +8,7 @@
     "lint:fix": "textlint --rulesdir .textlint/rules --fix 'articles/*.md' 'books/*.md'"
   },
   "dependencies": {
-    "zenn-cli": "^0.4.5"
+    "zenn-cli": "^0.5.0"
   },
   "devDependencies": {
     "textlint": "^15.5.1",
