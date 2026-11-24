@@ -27,9 +27,16 @@
       "groupName": "npm minor dependencies"
     },
     {
-      "description": "zenn-cli と textlint まわりは major まで自動マージする。textlint は CI の pnpm lint で動くのを確かめる",
+      "description": "zenn-cli と textlint まわりは major まで自動マージする。textlint は CI の pnpm lint で動くのを確かめる。パッケージは名前で並べ、新しく足したものは書くまで自動マージしない",
       "matchManagers": ["npm"],
-      "matchPackageNames": ["zenn-cli", "textlint", "textlint-*"],
+      "matchPackageNames": [
+        "zenn-cli",
+        "textlint",
+        "textlint-filter-rule-allowlist",
+        "textlint-filter-rule-comments",
+        "textlint-rule-preset-ja-spacing",
+        "textlint-rule-preset-ja-technical-writing"
+      ],
       "automerge": true
     }
   ]
