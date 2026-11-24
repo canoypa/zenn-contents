@@ -1,6 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>canoypa/renovate-config"
+    "github>canoypa/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "description": "npm の minor・patch 更新をまとめる。CI が無いので自動マージはしない",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "npm non-major dependencies"
+    }
   ]
 }
