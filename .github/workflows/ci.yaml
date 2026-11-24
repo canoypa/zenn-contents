@@ -42,3 +42,18 @@ jobs:
       # uses を変えて lockfile を作り直し忘れると、ここで落ちる
       - name: lockfile を確かめる
         run: gh actions-lock --verify
+
+  # 個々のジョブを ruleset の必須チェックに並べない。ジョブを足すたびに ruleset の
+  # 更新が要り、忘れると Renovate の自動マージが新しいジョブを待たずに通る。
+  ci-ok:
+    if: ${{ always() }}
+    needs: [lint, actions-lock]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: 結果を確かめる
+        env:
+          RESULTS: ${{ toJSON(needs.*.result) }}
+        run: |
+          echo "$RESULTS"
+          jq -e 'all(. == "success")' <<<"$RESULTS" > /dev/null
