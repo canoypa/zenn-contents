@@ -17,7 +17,6 @@
       "description": "patch と digest の更新を、手でマージせずに取り込む",
       "matchUpdateTypes": ["patch", "digest"],
       "groupName": "patch and digest updates",
-      // main の ruleset で CI の ci-ok を必須にしているので、CI が通ったものだけがマージされる
       "automerge": true
     },
     {
