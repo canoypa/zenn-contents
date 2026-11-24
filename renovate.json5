@@ -1,0 +1,44 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>canoypa/renovate-config"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "CI の gh-actions-lock の版を更新する",
+      // github-actions マネージャは、workflow の env に書いた拡張の版を見ない
+      "managerFilePatterns": [".github/workflows/ci.yaml"],
+      "matchStrings": ["GH_ACTIONS_LOCK_VERSION:\\s*(?<currentValue>v\\S+)"],
+      "depNameTemplate": "github/gh-actions-lock",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "patch・digest 更新の自動マージ",
+      "matchUpdateTypes": ["patch", "digest"],
+      "groupName": "patch and digest updates",
+      "automerge": true
+    },
+    {
+      "description": "npm の minor 更新をまとめる",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor"],
+      "groupName": "npm minor dependencies"
+    },
+    {
+      "description": "zenn-cli と textlint の major までの自動マージ",
+      "matchManagers": ["npm"],
+      // textlint は CI の pnpm lint で動くのを確かめられる。
+      // 名前で並べる。textlint-* だと、あとから足した textlint- で始まるパッケージも、誰が出したものでも major まで自動マージされる
+      "matchPackageNames": [
+        "zenn-cli",
+        "textlint",
+        "textlint-filter-rule-allowlist",
+        "textlint-filter-rule-comments",
+        "textlint-rule-preset-ja-spacing",
+        "textlint-rule-preset-ja-technical-writing"
+      ],
+      "automerge": true
+    }
+  ]
+}
