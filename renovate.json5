@@ -1,12 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>canoypa/renovate-config"
-  ],
+  "extends": ["github>canoypa/renovate-config"],
   "customManagers": [
     {
       "customType": "regex",
-      "description": "github-actions マネージャが見ない gh-actions-lock 拡張のバージョンを追跡する",
+      "description": "CI で lockfile を確かめる gh-actions-lock を最新に保つ",
+      // github-actions マネージャは、workflow の env に書いた拡張の版を見ない
       "managerFilePatterns": [".github/workflows/ci.yaml"],
       "matchStrings": ["GH_ACTIONS_LOCK_VERSION:\\s*(?<currentValue>v\\S+)"],
       "depNameTemplate": "github/gh-actions-lock",
@@ -15,20 +14,23 @@
   ],
   "packageRules": [
     {
-      "description": "パッチ・SHA ダイジェスト更新をまとめて自動マージする。main の ruleset で CI の ci-ok を必須にしている",
+      "description": "手で確かめなくてよい小さな更新を、待たずに取り込む",
       "matchUpdateTypes": ["patch", "digest"],
       "groupName": "patch and digest updates",
+      // main の ruleset で CI の ci-ok を必須にしているので、CI が通ったものだけがマージされる
       "automerge": true
     },
     {
-      "description": "npm の minor 更新をまとめる",
+      "description": "手で見る npm の更新の PR を少なくする",
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["minor"],
       "groupName": "npm minor dependencies"
     },
     {
-      "description": "zenn-cli と textlint まわりは major まで自動マージする。textlint は CI の pnpm lint で動くのを確かめる。パッケージは名前で並べ、新しく足したものは書くまで自動マージしない",
+      "description": "記事を書く道具を、手を掛けずに最新に保つ",
       "matchManagers": ["npm"],
+      // textlint は CI の pnpm lint で動くのを確かめられる。
+      // 名前で並べる。textlint-* だと、あとから足した textlint- で始まるパッケージも、誰が出したものでも major まで自動マージされる
       "matchPackageNames": [
         "zenn-cli",
         "textlint",
