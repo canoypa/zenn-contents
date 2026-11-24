@@ -14,20 +14,20 @@
   ],
   "packageRules": [
     {
-      "description": "手で確かめなくてよい小さな更新を、待たずに取り込む",
+      "description": "patch と digest の更新を、手でマージせずに取り込む",
       "matchUpdateTypes": ["patch", "digest"],
       "groupName": "patch and digest updates",
       // main の ruleset で CI の ci-ok を必須にしているので、CI が通ったものだけがマージされる
       "automerge": true
     },
     {
-      "description": "手で見る npm の更新の PR を少なくする",
+      "description": "npm の minor の更新で、手で見る PR を少なくする",
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["minor"],
       "groupName": "npm minor dependencies"
     },
     {
-      "description": "記事を書く道具を、手を掛けずに最新に保つ",
+      "description": "zenn-cli と textlint を、major の更新も手でマージせずに最新に保つ",
       "matchManagers": ["npm"],
       // textlint は CI の pnpm lint で動くのを確かめられる。
       // 名前で並べる。textlint-* だと、あとから足した textlint- で始まるパッケージも、誰が出したものでも major まで自動マージされる
