@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+
+# 同じブランチへの連続 push では最新のみ検証する
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # Node と pnpm のバージョンは mise.toml から用意する
+      - uses: jdx/mise-action@v5.2.9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run textlint
+        run: pnpm lint
+
+  actions-lock:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_ACTIONS_LOCK_VERSION: v0.5.1
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install gh-actions-lock
+        run: gh extension install github/gh-actions-lock --pin "$GH_ACTIONS_LOCK_VERSION"
+
+      # uses を変えて lockfile を作り直し忘れると、ここで落ちる
+      - name: Verify lockfile
+        run: gh actions-lock --verify
+
+  # 個々のジョブを ruleset の必須チェックに並べない。ジョブを足すたびに ruleset の
+  # 更新が要り、忘れると Renovate の自動マージが新しいジョブを待たずに通る。
+  ci-ok:
+    if: ${{ always() }}
+    needs: [lint, actions-lock]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Check results
+        env:
+          RESULTS: ${{ toJSON(needs.*.result) }}
+        run: |
+          echo "$RESULTS"
+          jq -e 'all(. == "success")' <<<"$RESULTS" > /dev/null

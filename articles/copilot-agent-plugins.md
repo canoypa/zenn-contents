@@ -77,7 +77,8 @@ your-marketplace/
 
 各プラグインは `plugins/` 配下にディレクトリとして配置し、そこに Skills / Agents / Commands / Hooks / MCP の各要素を配置します。
 
-プラグインの構成は Claude Code の形式に合わせているのか、スラッシュコマンドの定義は GitHub Copilot では `prompts/*.prompt.md` ですが、プラグインでは `commands/*.md` になっています。
+プラグインの構成は Claude Code の形式に合わせているのかもしれません。
+スラッシュコマンドの定義は、GitHub Copilot では `prompts/*.prompt.md` ですが、プラグインでは `commands/*.md` になっています。
 
 ### インストール
 

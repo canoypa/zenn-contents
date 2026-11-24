@@ -6,7 +6,8 @@ topics: ["powershell"]
 published: true
 ---
 
-最近 WSL などで Linux を触ってみている中で、bash のシンプルでカラフルなプロンプトをかなり気に入っちゃったので、普段使う PowerShell のプロンプトも bash っぽくしてみます。
+最近 WSL などで Linux を触ってみていて、bash のシンプルでカラフルなプロンプトをかなり気に入っちゃいました。
+なので、普段使う PowerShell のプロンプトも bash っぽくしてみます。
 
 ## コピーライトなどを表示しないようにする
 
