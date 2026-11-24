@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v7.0.1
 
       # Node と pnpm のバージョンは mise.toml から用意する
-      - uses: jdx/mise-action@v5.2.9
+      - uses: jdx/mise-action@v5.2.10
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
